@@ -77,14 +77,10 @@ module.exports.getAllUsers = async (req, res) => {
   }
 };
 
-module.exports.getUser = async (req, res) => {
+module.exports.deleteUsers = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.params.email }).select([
-      'email',
-      'username',
-      '_id',
-    ]);
-    return res.json(user);
+    const users = await User.deleteMany({});
+    return res.json(users);
   } catch (err) {
     return res.status(500).send('something went wrong. please try again.');
   }
