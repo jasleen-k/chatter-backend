@@ -35,6 +35,7 @@ const io = socket(server, {
     credentials: true,
     methods: ["GET", "POST"]
   },
+  allowEIO3: true,
 });
 
 global.onlineUsers = new Map();
