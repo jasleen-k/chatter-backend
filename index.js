@@ -29,6 +29,10 @@ const server = app.listen(PORT, () =>
   console.log(`Server is listening on Port ${PORT}`)
 );
 
+server.prependListener("request", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+});
+
 const io = socket(server, {
   cors: {
     origin: process.env.ORIGIN,
